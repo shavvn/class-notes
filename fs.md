@@ -92,7 +92,7 @@ Let's assume the following
 min seek time = max seek time / # of tracks = 3x416us/8k tracks = 1.523 us
 
 At 7200rpm
-$$ frac{7200 Rotation}{min} $$
+
 7200 rotation/ min * 1min/60s * 1s/1000ms * 8k sectors/rotation = 0.983 sectors/us
 thus,
 0.983 sectors/ms x 1.5234 ms/1-track seek = 1.49 sectors/1track-seek
