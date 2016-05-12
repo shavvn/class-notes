@@ -104,7 +104,6 @@ Let's assume the following
 > block, by the time you move to that track, 1.5 sectors has passed.
 
 
-
 Another math example:
 
 - 1 platter , 256M blocks
@@ -116,10 +115,11 @@ Another math example:
 >7200/min* 1min/60s* 1s/1000000us * 16secotrs/rotation = 1.966 sectors/usec
 >
 >1.966 sectors* 0.762
-
-shoot I gave up... see the photo below:
+>
+> shoot I gave up... see the photo below:
 ![disk calculation](images/disk_calc.jpg)
-
+> but the conclusion here is that if you have fewer platters but more tracks and sectors
+> you'll get more "sectors/1-track-seek"
 
 ### Options for scheduling 
 
