@@ -1,10 +1,11 @@
-### Apr 13
+# File System
+## (Apr 13)
 
-#### File Systems
+### File Systems
 Purpose: What is a database?
 
-- 0.[Optional] nonvolatile/permanent -> not scratch space
-- 1.Holds stuff for you
+- 0.[Optional] nonvolatile/permanent -> not scratchpad space
+- 1. Holds stuff for you
 - 2. Finds it for you when you ask
 
 Permanent?
@@ -13,7 +14,7 @@ Permanent?
 - if temporary, maybe simpler is better
 (critical distinction between FS and VM)
 
-A few design questions
+### A few design questions
 
 - Is there a limitation on the # of thing that you can put into these things?
 - or just a limit on the total space they occupy?
@@ -43,17 +44,18 @@ Unix file system
 
 - file has a name (internally a number)
 - it is put into a directory
-- it has rwx perms for owner, group,  world
-
+- it has rwx permissions for owner, group, world
 - weakness
-	- you've tree hierarchy that servers as a naming scheme ( no builtin way to search, but you can use applications to search..)
+	- you've tree hierarchy that serves as a naming scheme ( there's no builtin mechanism to allow you to search, but you can use applications to search..)
 
 BeOS (Berkeley)
+
 
 - the whole thing is a relational database
 	- files
 	- meta data
 	- all application data
+	
 
 Disks
 
@@ -64,23 +66,17 @@ Disks
 Time
 
  - two different disk requests arrives the OS at the same time
- - hey last time I accessed the disk 
+ - last time the OS accessed the disk 
 	 - it was time X
 	 - the head was over track y
 	 - the lead was over sector z of track y
-	 - so where is it now?
+	 - so where is the head now?
 
-Options for scheduling algorithm?
 
-- FIFO: not good
-- minimum seek time first (SST(track)F or SSF) shortest seek first
-	- does not consider sector, just track
-	- susceptible to starvation
-- SCAN
 
-### Apr 18
+## (Apr 18)
 
-#### Some math on disk moves..
+### Some math on disk moves..
 e.g. 1TB 7200rpm disk
 avg seek time = 416ms
 avg seek time 1/3 max seek time, then max seek time = 3x416ms
@@ -116,10 +112,13 @@ min seek time = 3 x 4.16/16k tracks = 0.762 us/track seek
 
 1.966 sectors* 0.762
 
-shoot I gave up....
+shoot I gave up... see the photo below:
+[!disk calculation](images/disk_calc.jpg)
 
-#### Options for scheduling 
 
+### Options for scheduling 
+
+- FIFO: not good
 - SSTF/SSF: shortest seek first
 - SCAN
 	- run the head block and 4th read the whole disk, service  requests, in track order
@@ -128,7 +127,7 @@ shoot I gave up....
 	- seek + rotational
 - However, SSTF + SPTF are both greedy algorithms, you probably want SPTF but it requires the geometry info of the disk
 
-#### File Systems Basics
+### File Systems Basics
 
 - Superblock
 	- how big it all is
