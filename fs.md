@@ -89,28 +89,31 @@ Let's assume the following
 
 1 TB 256 M blocks of 4k blocks
 
-min seek time = max seek time / # of tracks = 3x416us/8k tracks = 1.523 us
-
-At 7200rpm
-
-7200 rotation/ min * 1min/60s * 1s/1000ms * 8k sectors/rotation = 0.983 sectors/us
-thus,
-0.983 sectors/ms x 1.5234 ms/1-track seek = 1.49 sectors/1track-seek
-
-This means if 
-- you read block 8, 
-- 1.5us later....
-
-Another math example:
-
-- 1 platter , 256M blocks
-- 16 K sectors
-- 16 K tracks
-
-min seek time = 3 x 4.16/16k tracks = 0.762 us/track seek
-7200/min* 1min/60s* 1s/1000000us * 16secotrs/rotation = 1.966 sectors/usec
-
-1.966 sectors* 0.762
+> min seek time = max seek time / # of tracks = 3x416us/8k tracks = 1.523 us per track seek
+>
+> At 7200rpm
+>
+> 7200 rotation/ min * 1min/60s * 1s/1000000us * 8k sectors/rotation = 0.983 sectors/us
+>
+> thus,
+>
+> 0.983 sectors/us x 1.5234 us/1-track-seek = 1.49 sectors/1-track-seek
+>
+> This means if 
+>
+> - you read block 8, 
+> - 1.5us later....
+>
+> Another math example:
+>
+> - 1 platter , 256M blocks
+> - 16 K sectors
+> - 16 K tracks
+>
+>min seek time = 3 x 4.16/16k tracks = 0.762 us/track seek
+>7200/min* 1min/60s* 1s/1000000us * 16secotrs/rotation = 1.966 sectors/usec
+>
+>1.966 sectors* 0.762
 
 shoot I gave up... see the photo below:
 ![disk calculation](images/disk_calc.jpg)
