@@ -84,15 +84,15 @@ avg seek time 1/3 max seek time, then max seek time = 3x416ms
 Let's assume the following 
 
 - 4 platters
-- 8k cylenders/tracks
+- 8k cylenders or tracks
 - 8k sectors
 
 1 TB 256 M blocks of 4k blocks
 
-min seek time = max seek time / # of tracks
-which is 3x416us/8k tracks = 1.523 us
+min seek time = max seek time / # of tracks = 3x416us/8k tracks = 1.523 us
 
-at 7200rpm
+At 7200rpm
+$$ frac{7200 Rotation}{min} $$
 7200 rotation/ min * 1min/60s * 1s/1000ms * 8k sectors/rotation = 0.983 sectors/us
 thus,
 0.983 sectors/ms x 1.5234 ms/1-track seek = 1.49 sectors/1track-seek
