@@ -86,8 +86,7 @@ Let's assume the following
 - 4 platters
 - 8k cylenders or tracks
 - 8k sectors
-
-1 TB 256 M blocks of 4k blocks
+- 1 TB 256 M blocks of 4k blocks
 
 > min seek time = max seek time / # of tracks = 3x416us/8k tracks = 1.523 us per track seek
 >
@@ -101,15 +100,18 @@ Let's assume the following
 >
 > This means if 
 >
-> - you read block 8, 
-> - 1.5us later....
->
-> Another math example:
->
-> - 1 platter , 256M blocks
-> - 16 K sectors
-> - 16 K tracks
->
+> - if you read a block from a track, and next block is in another
+> block, by the time you move to that track, 1.5 sectors has passed.
+
+
+
+Another math example:
+
+- 1 platter , 256M blocks
+- 16 K sectors
+- 16 K tracks
+- still 1 TB
+
 >min seek time = 3 x 4.16/16k tracks = 0.762 us/track seek
 >7200/min* 1min/60s* 1s/1000000us * 16secotrs/rotation = 1.966 sectors/usec
 >
