@@ -113,7 +113,7 @@ min seek time = 3 x 4.16/16k tracks = 0.762 us/track seek
 1.966 sectors* 0.762
 
 shoot I gave up... see the photo below:
-[!disk calculation](images/disk_calc.jpg)
+![disk calculation](images/disk_calc.jpg)
 
 
 ### Options for scheduling 
