@@ -59,6 +59,13 @@ BeOS (Berkeley)
 
 Disks
 
+- Architecture / How it looks
+	- platters
+	- tracks
+	- sectors
+	- head
+![disk_structure](images/disk_structure.PNG)
+	
 - The OS needss to know where the head is, what sector/track ... why? 
   placement of data + using the knowledge of disks will get you better performance
 	- this is the main difference between original unix FS and Berkeley FFS
@@ -143,16 +150,18 @@ Another math example:
 
 ### File Systems Basics
 
-- Superblock
+- Superblock -- High level metadata 
 	- how big it all is
-	- how many modes
+	- how big a lock is, and how many of them
+	- how many inodes
 	- bad block list
 	- pointer to head of free list (mode free list bit vector)
+	
 - inode <-> file, 1 to 1 mapping
 	- Type + access mode for the file
 	- file's ..
 	- group ID
-	- number of references to file (links that point to it)
+	- reference count (links that point to it)
 	- time stamps
 		- created
 		- last read
@@ -161,9 +170,14 @@ Another math example:
 	- size of file (bytes)
 	- number of physical blocks used
 	- pointers: both direct and indirect
-		- direct block pointers: only points to 64K 
-		- indirect pointers: another 64K 
-		- double indirect pointers: 64x
+		- ( 12) direct block pointers: only points to 48K
+		- (one) indirect pointers: another (#of pointers = block_size/pointer_size) 
+		- (one) double indirect pointers: (#of pointers = (block_size/pointer_size)^2)
+		- (one) triple indirect 
+
+or simply:
+![inode](images/unix_inode.png)
+
 - inode # unique ID for the file, so
 	- kinda generic- you can build anything
 		- doesn't have to be directory based, could be database
@@ -175,9 +189,9 @@ Another math example:
 - Caching
 - Concurrency (parallel or pipeling)
 
-### Apr 20
+## (Apr 20)
 
-#### Caching in FFS
+### Caching in FFS
 
 "buffer pool": a collection of 512 blocks (4KB per block)
 
@@ -194,7 +208,7 @@ Those 4 lists are ordered lists.
 	- things speculating prefetched
 	- if something isn't used for a while, move to free list
 
-#### Log-structured file systems
+### Log-structured file systems
 Main problems
 
 - bandwidth to disk is okay
@@ -257,7 +271,7 @@ Worst case: filesystem is x% full, every segment is x% full
 Say x=50%, then N=2, meaning need to clean 2 segments, coalescence data of 1 of them to the other
 if x=75%, then N=4, meaning need to clean 4 segments and write their data to 3 of them, leaving 1 free.
 
-#### Intro to flash
+### Intro to flash
 
 - flash doesn't let you overwrite data
 - flash does best in large blocks (R/W)
@@ -267,8 +281,8 @@ if x=75%, then N=4, meaning need to clean 4 segments and write their data to 3 o
 data is read/write at page (4KB, 8KNB ... KB) granularity
 data is erased at block (64, 128... pages) granularity
 
-### May, 2
-#### Scheduling/Load Balancing Algorithm for Multiprogramming SCAF
+## (May, 2)
+### Scheduling/Load Balancing Algorithm for Multiprogramming SCAF
 
 **Multiprogramming**: running multiple processes simultaneously
 However, current OS schedule threads instead of processes, machines could be oversubscribed
