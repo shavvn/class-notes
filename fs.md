@@ -1,4 +1,47 @@
 # File System
+
+## (Apr, 6)
+### Persistent Memory
+
+- Persistent memory 
+	- kernel, utiilities
+	- your apps
+	- your files
+	- in a word, stuff that affects the program that creates it
+
+In the old time,  it means disk, tape, peachmeat...
+Today, it's NVMEM ( non-volatile Mem )
+
+It's interesting  beceause
+
+- main memory: 10~100 cycles
+- disk: 10 - 100 million cycle
+- tape: eon
+- non-volatile (e.g. flash) 100 - 100,000 cycles
+
+It takes too long.. therefore when we access disks, we can afford to spend LOTS of time/attention/energy optimizing the access.
+
+Discussion Questions
+Q: What does it mean to be persistent
+A: Data lasts beyond the exection of the program that creates it
+
+- What are som implications of it?
+	- how to handle ownership when a process exits but the data are still there?
+	- how do you encode ownership? where is it stored? how is it checked?
+	- If it is really long-lasting - how to read it? e.g old media, floppy disks/tapes, formats, odd OSes, etc
+		- what if the data outlasts the system that creates it?
+- What should it look like?
+	- Files are arbitrary length: 0B, 1B..... xGB
+- how do you name things?
+	- today unix, windows, mac: all but unix expose the medium: you don't see disk number on the path, you can mount anything anywhere
+	- In file systems, directories are *things* 
+	- alternatively: "here is the name of my object -- it is long"
+	- i.e. you could do this "447/projects/p1/' ...
+- How to create it?
+	- in file systems you open() or creat() a file and then write() into it at specific locations use sys calls 
+	- if it's more like main memory,  would it still work this way?
+		- int permanentify(uint page_num, char* name, ownership info)
+
 ## (Apr 13)
 
 ### File Systems
