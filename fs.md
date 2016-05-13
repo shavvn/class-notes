@@ -123,15 +123,18 @@ Another math example:
 
 ### Options for scheduling 
 
-- FIFO: not good
+- Shortest Job First (SJF) principle
+- FIFO: obviously not good
 - SSTF/SSF: shortest seek first
+	- drive geometry not available to OS
+	- starvation could happen because rotation is not taken into consideration
 - SCAN
-	- run the head block and 4th read the whole disk, service  requests, in track order
-	- usually ???: cut off line
+	- run the head block and forth read the whole disk, service requests in track order
+	- ignore rotations
 - shortest positioning time first (SPTF) 
 	- seek + rotational
 - However, SSTF + SPTF are both greedy algorithms, you probably want SPTF but it requires the geometry info of the disk
-
+	- so SPTF is usually implemented inside of a disk, OS just send a bunch of requests to them and disk will handle it internally
 ### File Systems Basics
 
 - Superblock
