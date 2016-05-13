@@ -96,3 +96,17 @@ read(disk, buffer, size)
 read(network, buffer, size) 
 read(flash, buffer, size) 
 read(blah, buffer, size) 
+
+## (Apr, 4)
+### Syscall Recap
+
+In Unix, when you open(some_file)
+
+- Inside OS: hey some_file! do an initialzation sequence
+    - so the some_file does what's necessary to set up basic access
+    (basically there's an object (inode?) for everything to set up basic access)
+    - OS keeps that object associated with some_file by putting it into an array (per process)
+    i.e. filedescriptors[num_open_descriptors]
+    - return to user code; num_open_descripotrs++
+
+
