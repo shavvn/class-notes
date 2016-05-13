@@ -118,7 +118,8 @@ Another math example:
 >
 > shoot I gave up... see the photo below:
 ![disk calculation](images/disk_calc.jpg)
-> but the conclusion here is that if you have fewer platters but more tracks and sectors
+> but the conclusion here is that if you have fewer platters but more tracks 
+> and sectors
 > you'll get more "sectors/1-track-seek"
 
 ### Options for scheduling 
@@ -134,7 +135,9 @@ Another math example:
 - shortest positioning time first (SPTF) 
 	- seek + rotational
 - However, SSTF + SPTF are both greedy algorithms, you probably want SPTF but it requires the geometry info of the disk
-	- so SPTF is usually implemented inside of a disk, OS just send a bunch of requests to them and disk will handle it internally
+	- so SPTF is usually implemented inside of a disk,
+	OS just send a bunch of requests to them and disk will handle it internally
+
 ### File Systems Basics
 
 - Superblock
