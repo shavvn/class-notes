@@ -59,7 +59,8 @@ BeOS (Berkeley)
 
 Disks
 
-- The OS needss to know where the head is, what sector/track ... why? placement of data + using the knowledge of disks will get you better performance
+- The OS needss to know where the head is, what sector/track ... why? 
+  placement of data + using the knowledge of disks will get you better performance
 	- this is the main difference between original unix FS and Berkeley FFS
 	- it pays to order requests that you send to the disk such that they come back quickly
 
@@ -130,13 +131,15 @@ Another math example:
 	- drive geometry not available to OS
 	- starvation could happen because rotation is not taken into consideration
 - SCAN
-	- run the head block and forth read the whole disk, service requests in track order
+	- run the head block and forth read the whole disk, 
+	  service requests in track order
 	- ignore rotations
 - shortest positioning time first (SPTF) 
 	- seek + rotational
-- However, SSTF + SPTF are both greedy algorithms, you probably want SPTF but it requires the geometry info of the disk
+- However, SSTF + SPTF are both greedy algorithms,
+  you probably want SPTF but it requires the geometry info of the disk
 	- so SPTF is usually implemented inside of a disk,
-	OS just send a bunch of requests to them and disk will handle it internally
+	  OS just send a bunch of requests to them and disk will handle it internally
 
 ### File Systems Basics
 
