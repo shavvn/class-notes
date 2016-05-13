@@ -190,6 +190,21 @@ or simply:
 - Concurrency (parallel or pipeling)
 
 ## (Apr 20)
+### Problem of Traditional FS
+
+- Too damn slow
+	- treat disk as RAM, but random access for disk is terrible
+	- when files get fragemented, they're spread all over the disk
+	- block size too small. (512K), efficient in space but inefficient for performance
+
+### Berkerley Fast File System
+
+- use cylinder groups to make FS "disk aware"
+- if cylinder info not available, use block groups instead
+- key idea is to make use of sequential access, keep related stuff together (same group)
+- so now you'll have locality, and you can cache it!
+- problem: fragmentation
+	- use smaller (512K) sub groups, but slow
 
 ### Caching in FFS
 
@@ -207,12 +222,16 @@ Those 4 lists are ordered lists.
 	- things moved from LRU
 	- things speculating prefetched
 	- if something isn't used for a while, move to free list
+- Free
+
 
 ### Log-structured file systems
-Main problems
+
+Main problems of FS
 
 - bandwidth to disk is okay
 - moving the head around sucks
+	- writing performance sucks
 - are we making best use of cache?
 
 Background/perspective
