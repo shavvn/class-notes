@@ -81,6 +81,7 @@ How do you communicate?
 
 So SW does this:
 
+- push PC and some other regs to a **per-process** kernel stack
 - put # into reg (func)
 - put arg into regs and shared memory
 - call trap instruction
